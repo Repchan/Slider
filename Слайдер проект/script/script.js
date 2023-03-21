@@ -1,13 +1,12 @@
-let descritption = document.getElementById(`description_grid`);
+let description = document.getElementById(`description_grid`);
 let sliderDot = document.querySelectorAll(`#slider_dot`);
-let arrowPrevius = document.getElementById(`slider_arrow_previus`);
-let arrowNext = document.getElementById(`slider_arrow_next`);
+let arrows = document.querySelectorAll(`#slider_arrow`);
 let link = document.querySelectorAll(`#link`)
 let photo = document.getElementById(`photo`);
 
 let photos = [`images/image/image 2.1 (1).png`,`images/image/image 2 (2).png`,`images/image/image 3.png`];
 
-let descritptions = [`<div class="grid_card">
+let descriptions = [`<div class="grid_card">
 								<h2 class="title">City:</h2>
 								<p class="subtitle">Rostov-on-Don
 								LCD admiral</p>
@@ -55,140 +54,60 @@ let descritptions = [`<div class="grid_card">
 								<h2 class="title">Repair Cost:</h2>
 								<p class="subtitle">Upon request</p>
 							</div>`];
-
+let clickFunc = function(i) {
+	return function () {
+		link[i].classList.add("active-link");
+		sliderDot[i].classList.add(`active_dot`);
+		link.forEach((value, index) => {
+			if (index !== i) {
+				value.classList.remove("active-link");
+				sliderDot[index].classList.remove("active_dot");
+			}
+		});
+		photo.src = photos[i];
+		description.innerHTML = descriptions[i];
+	}
+}
  for (let i = 0; i < link.length; i++) {
-     link[i].addEventListener("click", function() {
-       link[i].classList.add("active-link");
-       sliderDot[i].classList.add(`active_dot`);
-       if(i == 2){
-       	link[i - 2].classList.remove("active-link");
-       	link[i - 1].classList.remove("active-link");
-       	sliderDot[i - 2].classList.remove(`active_dot`);
-       	sliderDot[i - 1].classList.remove(`active_dot`);
-       }
-       else if(i == 0){
-       	link[i + 2].classList.remove("active-link");
-       	link[i + 1].classList.remove("active-link");
-       	sliderDot[i + 2].classList.remove(`active_dot`);
-       	sliderDot[i + 1].classList.remove(`active_dot`);
-       }
-       else if(i == 1){
-       	link[i - 1].classList.remove("active-link");
-       	link[i + 1].classList.remove("active-link");
-       	sliderDot[i - 1].classList.remove(`active_dot`);
-       	sliderDot[i + 1].classList.remove(`active_dot`);
-       }
-       photo.src = photos[i];
-       descritption.innerHTML = descritptions[i];
-     });
-
-     sliderDot[i].addEventListener("click", function() {
-       link[i].classList.add("active-link");
-       sliderDot[i].classList.add(`active_dot`);
-       if(i == 2){
-       	link[i - 2].classList.remove("active-link");
-       	link[i - 1].classList.remove("active-link");
-       	sliderDot[i - 2].classList.remove(`active_dot`);
-       	sliderDot[i - 1].classList.remove(`active_dot`);
-       }
-       else if(i == 0){
-       	link[i + 2].classList.remove("active-link");
-       	link[i + 1].classList.remove("active-link");
-       	sliderDot[i + 2].classList.remove(`active_dot`);
-       	sliderDot[i + 1].classList.remove(`active_dot`);
-       }
-       else if(i == 1){
-       	link[i - 1].classList.remove("active-link");
-       	link[i + 1].classList.remove("active-link");
-       	sliderDot[i - 1].classList.remove(`active_dot`);
-       	sliderDot[i + 1].classList.remove(`active_dot`);
-       }
-       photo.src = photos[i];
-       descritption.innerHTML = descritptions[i];
-     });
+     link[i].addEventListener("click", clickFunc(i) )
+	 sliderDot[i].addEventListener("click", clickFunc(i))
  }
+let arrowClick = function(k){
+	 return function (){
+		 for(let x = 0;x<sliderDot.length;x++){
+			 if(sliderDot[x].classList.contains(`active_dot`)){
+				 if(k === 1){
+					 if(x === 2){
+						 x = 0;
+					 }
+					 else{
+						 x++;
+					 }
+				 }
+				 else{
+					 if(x === 0){
+						 x = 2;
+					 }
+					 else{
+						 x--;
+					 }
+				 }
+				 console.log(x)
+				 sliderDot[x].classList.add(`active_dot`);
+				 link[x].classList.add(`active-link`);
+				 photo.src = photos[x];
+				 description.innerHTML = descriptions[x];
+				 for(let i = 0;i<sliderDot.length;i++){
+					 if(i !== x){
+						 sliderDot[i].classList.remove(`active_dot`);
+						 link[i].classList.remove(`active-link`);
+					 }
+				 }
+			 }
 
-arrowNext.addEventListener(`click` , function() {
-	for (let i = 0; i < link.length; i++) {
-     	if(link[i].classList.contains(`active-link`)){
-     		if(i == 2){
-     			i=0;
-     			link[i].classList.add("active-link");
-     			sliderDot[i].classList.add(`active_dot`);
-     			link[i + 2].classList.remove("active-link");
-       			link[i + 1].classList.remove("active-link");
-       			sliderDot[i + 2].classList.remove(`active_dot`);
-       			sliderDot[i + 1].classList.remove(`active_dot`);
-       			photo.src = photos[i];
-       			descritption.innerHTML = descritptions[i];
-     		}
-     		else{
-     			i++;
-     			if(i == 1){
-     					link[i].classList.add("active-link");
-     					sliderDot[i].classList.add(`active_dot`);
-     					link[i - 1].classList.remove("active-link");
-       					link[i + 1].classList.remove("active-link");
-       					sliderDot[i - 1].classList.remove(`active_dot`);
-       					sliderDot[i + 1].classList.remove(`active_dot`);
-       			}
-       			else{
-       				link[i].classList.add("active-link");
-     				sliderDot[i].classList.add(`active_dot`);
-       				link[i - 2].classList.remove("active-link");
-       				link[i - 1].classList.remove("active-link");
-       				sliderDot[i - 2].classList.remove(`active_dot`);
-       				sliderDot[i - 1].classList.remove(`active_dot`);
-       			}
-
-       			photo.src = photos[i];
-       			descritption.innerHTML = descritptions[i];
-     		}
-     	}
- 	}
-})
-
-arrowPrevius.addEventListener(`click` , function() {
-	for (let i = 0; i < link.length; i++) {
-     	if(link[i].classList.contains(`active-link`)){
-     		if(i == 0){
-     			i=2;
-     			link[i].classList.add("active-link");
-     			sliderDot[i].classList.add(`active_dot`);
-       			link[i - 2].classList.remove("active-link");
-       			link[i - 1].classList.remove("active-link");
-       			sliderDot[i - 2].classList.remove(`active_dot`);
-       			sliderDot[i - 1].classList.remove(`active_dot`);
-       			photo.src = photos[i];
-       			descritption.innerHTML = descritptions[i];
-     		}
-     		else{
-     			i--;
-     			if(i == 1){
-     					link[i].classList.add("active-link");
-     					sliderDot[i].classList.add(`active_dot`);
-     					link[i - 1].classList.remove("active-link");
-       					link[i + 1].classList.remove("active-link");
-       					sliderDot[i - 1].classList.remove(`active_dot`);
-       					sliderDot[i + 1].classList.remove(`active_dot`);
-       			}
-       			else{
-       				
-       			link[i].classList.add("active-link");
-     			sliderDot[i].classList.add(`active_dot`);
-     			link[i + 2].classList.remove("active-link");
-       			link[i + 1].classList.remove("active-link");
-       			sliderDot[i + 2].classList.remove(`active_dot`);
-       			sliderDot[i + 1].classList.remove(`active_dot`);
-       			photo.src = photos[i];
-       			descritption.innerHTML = descritptions[i];
-
-       			}
-
-       			photo.src = photos[i];
-       			descritption.innerHTML = descritptions[i];
-     		}
-     	}
- 	}
-})
- 
+		 }
+	 }
+}
+ for(let k = 0;k<arrows.length;k++){
+	 arrows[k].addEventListener(`click` , arrowClick(k))
+ }

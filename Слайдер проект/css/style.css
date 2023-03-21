@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@400;700&family=Yeseva+One&display=swap');
 *{
+	font-family: "Nunito Sans" , sans-serif;
 	margin:0;
 	padding: 0;
 }
@@ -21,7 +22,7 @@ color:white;
 	text-decoration: none;
 }
 .title{
-	font-family: 'Yeseva One';
+	font-family: 'Yeseva One', sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 27px;
@@ -30,21 +31,12 @@ color:white;
 	color: #E3B873;
 }
 .subtitle{
-	font-family: 'Yeseva One';
+	font-family: 'Yeseva One' , sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 20px;
 	line-height: 28px;
-	text-align: center;
 	text-align: left;
-}
-.input{
-
-}
-body,html{
-	font-family: "Nunito Sans";
-	margin: 0;
-	padding: 0;
 }
 .container{
 	max-width:1256px;
@@ -69,14 +61,15 @@ body,html{
 	flex-direction: column;
 	margin-top:69.36px;
 }
-.Completed_projects_description > .title{
+.Completed_projects_description  .title{
+	font-family: 'Nunito Sans', sans-serif;
 	font-size: 27px;
 	line-height: 37px;
 	margin-bottom: 34px;
 	text-align: left;
 }
-.Completed_projects_description > .subtitle{
-	font-family: 'Nunito Sans';
+.Completed_projects_description  .subtitle{
+	font-family: 'Nunito Sans', sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 14px;
@@ -101,7 +94,6 @@ body,html{
 	text-align: left;
 }
 .grid_card .subtitle{
-	font-family: 'Nunito Sans';
 	font-style: normal;
 	font-weight: 400;
 	font-size: 13px;
@@ -142,7 +134,7 @@ body,html{
 	margin-bottom: 46px;
 }
 .Completed_projects_photo .toogle .link{
-	font-family: 'Yeseva One';
+	font-family: 'Yeseva One' , sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 14px;
